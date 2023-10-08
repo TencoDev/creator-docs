@@ -118,9 +118,17 @@ local function onPlayerAdded(player)
 end
 
 -- Initialize any players added before connecting to PlayerAdded event
-for _, player in Players:GetPlayers() do
-  onPlayerAdded(player)
+for _, player in ipairs(Players:GetPlayers()) do
+    -- Check if the player already has coins
+    local currentCoins = PlayerData.getValue(player, COIN_KEY_NAME)
+    if currentCoins == nil then
+        -- Reset the player's coin count to 0 if they don't have any coins
+        updatePlayerCoins(player, function(_)
+            return 0
+        end)
+    end
 end
+
 
 local function onPlayerRemoved(player)
   updatePlayerCoins(player, function(_)
