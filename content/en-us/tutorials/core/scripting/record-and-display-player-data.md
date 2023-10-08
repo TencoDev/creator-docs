@@ -303,7 +303,7 @@ data. To update **CoinService**:
     local Leaderboard = require(ServerStorage.Leaderboard)
     local PlayerData = require(ServerStorage.PlayerData)
 
-    local coinsFolder = Workspace.World.Coins
+    local coinsFolder = Workspace.Coins
     local coins = coinsFolder:GetChildren()
 
     local COIN_KEY_NAME = PlayerData.COIN_KEY_NAME
